@@ -3,17 +3,39 @@ import './App.css';
 
 function App() {
   const [stats, setStats] = useState({
-    price: 'Loading...',
-    liquidity: 'Loading...',
-    holders: 'Loading...',
-    marketCap: 'Loading...'
+    price: 'Wait for Launch',
+    liquidity: 'No Pool',
+    marketCap: 'Calculating...',
+    priceChange: ''
   });
 
-  const contractAddress = "0x0caE8b7e812e46145450Ea0f3048D64F091820aE";
+  // Die korrekte Luisli Gold Contract Address (LGOLD)
+  const contractAddress = "0x0cae8b7e812e46145450ea0f3048d64f091820ae";
 
   useEffect(() => {
-    // Später kommt hier die Live-Abfrage rein
-  }, []);
+    const fetchStats = async () => {
+      try {
+        const response = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${contractAddress}`);
+        const data = await response.json();
+
+        if (data.pairs && data.pairs.length > 0) {
+          const pair = data.pairs[0];
+          setStats({
+            price: `$${parseFloat(pair.priceUsd).toFixed(10)}`,
+            liquidity: `$${Math.round(pair.liquidity.usd).toLocaleString()}`,
+            marketCap: `$${Math.round(pair.fdv).toLocaleString()}`,
+            priceChange: pair.priceChange.h24
+          });
+        }
+      } catch (error) {
+        console.error("Fehler beim Abrufen der Daten:", error);
+      }
+    };
+
+    fetchStats();
+    const interval = setInterval(fetchStats, 30000); // Alle 30 Sekunden aktualisieren
+    return () => clearInterval(interval);
+  }, [contractAddress]);
 
   return (
     <div className="container">
@@ -32,7 +54,7 @@ function App() {
         <h1 className="gold-title">LUISLI GOLD</h1>
         <p className="subtitle">The Golden Standard on Base 🔵</p>
 
-        {/* 📊 KARTE */}
+        {/* 📊 KARTE MIT LIVE DATEN */}
         <div className="card">
           <div className="status-badge">Live Market Data</div>
           <div className="stats-grid">
@@ -42,7 +64,7 @@ function App() {
             </div>
             <div className="stat-item">
               <span>Liquidity:</span>
-              <span className="stat-value">No Pool yet</span>
+              <span className="stat-value">{stats.liquidity}</span>
             </div>
             <div className="stat-item">
               <span>Market Cap:</span>
