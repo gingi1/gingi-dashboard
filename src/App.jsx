@@ -1,113 +1,75 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
 function App() {
-  const [price, setPrice] = useState("Lade...");
-  const [mcap, setMcap] = useState("Lade...");
-  const [change, setChange] = useState(0);
+  const [stats, setStats] = useState({
+    price: 'Loading...',
+    liquidity: 'Loading...',
+    holders: 'Loading...',
+    marketCap: 'Loading...'
+  });
 
-  // Deine Contract Adresse
-  const contractAddress = "0x0caE8b7e812e46145450Ea0f3048D64F091820aE";
+  const contractAddress = "0xde46eD596277D87bBaF18F93294E245229559868";
 
   useEffect(() => {
-    const fetchPrice = async () => {
-      try {
-        // Wir fragen die Dexscreener API direkt ab
-        const response = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${contractAddress}`);
-        const data = await response.json();
-        
-        if (data.pairs && data.pairs.length > 0) {
-          const pair = data.pairs[0];
-          // Preis auf 8 Nachkommastellen runden
-          setPrice("$" + parseFloat(pair.priceUsd).toFixed(8));
-          // Market Cap (FDV) schön formatiert
-          setMcap("$" + parseInt(pair.fdv).toLocaleString());
-          // 24h Änderung
-          setChange(pair.priceChange.h24);
-        } else {
-          // Falls noch keine Liquidität da ist
-          setPrice("No Pool yet");
-          setMcap("N/A");
-        }
-      } catch (error) {
-        console.error("Fehler beim Laden der Daten:", error);
-        setPrice("Error");
-      }
-    };
-
-    fetchPrice();
-    // Alle 30 Sekunden aktualisieren
-    const interval = setInterval(fetchPrice, 30000);
-    return () => clearInterval(interval);
+    // Später kommt hier die Live-Abfrage rein
   }, []);
 
   return (
     <div className="container">
       <div className="content-wrapper">
-        <div className="logo-section">
+        
+        {/* 🌕 MOND */}
+        <div className="moon-container">
           <img 
-            src="https://img.icons8.com/emoji/160/full-moon-emoji.png" 
+            src="https://img.icons8.com/emoji/256/full-moon-emoji.png" 
             className="lgold-logo" 
             alt="Luisli Gold Moon" 
           />
         </div>
-        
-        <h1 className="gold-title">Luisli Gold</h1>
-        <p className="subtitle">The official Headquarters of $LGOLD on Base.</p>
-        
+
+        {/* 👑 TITEL */}
+        <h1 className="gold-title">LUISLI GOLD</h1>
+        <p className="subtitle">The Golden Standard on Base 🔵</p>
+
+        {/* 📊 KARTE */}
         <div className="card">
-          <div className="status-badge">Live on Base 🔵</div>
-          <h2>Token Statistics</h2>
+          <div className="status-badge">Live Market Data</div>
           <div className="stats-grid">
             <div className="stat-item">
-              <span>Price (USD)</span>
-              <strong style={{color: '#FFD700'}}>{price}</strong>
+              <span>Price:</span>
+              <span className="stat-value">{stats.price}</span>
             </div>
             <div className="stat-item">
-              <span>Market Cap</span>
-              <strong>{mcap}</strong>
+              <span>Liquidity:</span>
+              <span className="stat-value">No Pool yet</span>
             </div>
             <div className="stat-item">
-              <span>24h Change</span>
-              <strong style={{color: change >= 0 ? '#00ff00' : '#ff4444'}}>
-                {change >= 0 ? `+${change}` : change}%
-              </strong>
+              <span>Market Cap:</span>
+              <span className="stat-value">{stats.marketCap}</span>
             </div>
           </div>
         </div>
 
-        {/* Deine integrierten Social Links */}
-        <div className="social-links">
-          {/* X (Twitter) Button */}
-          <a href="https://x.com/GuenterWiestner" target="_blank" rel="noreferrer" className="social-button x-link">
-            𝕏
-          </a>
-          
-          {/* Farcaster Button */}
-          <a href="https://farcaster.xyz/gingi" target="_blank" rel="noreferrer" className="social-button fc-link">
-            🟣 Farcaster
-          </a>
-
-          {/* Telegram Button */}
-          <a href="https://t.me/gingi_info" target="_blank" rel="noreferrer" className="social-button tg-link">
-            Telegram
-          </a>
-
-          {/* Token Contract / Chart Button */}
-          <a href={`https://dexscreener.com/base/${contractAddress}`} target="_blank" rel="noreferrer" className="social-button dex-link">
-            📈 Chart
-          </a>
+        {/* 🔗 SOCIALS */}
+        <div className="social-links-container">
+          <div className="social-links">
+            <a href="https://x.com/GuenterWiestner" target="_blank" rel="noreferrer" className="social-button">𝕏</a>
+            <a href="https://farcaster.xyz/gingi" target="_blank" rel="noreferrer" className="social-button">🟣 Farcaster</a>
+            <a href="https://t.me/gingi_info" target="_blank" rel="noreferrer" className="social-button">Telegram</a>
+            <a href={`https://dexscreener.com/base/${contractAddress}`} target="_blank" rel="noreferrer" className="social-button">📈 Chart</a>
+          </div>
         </div>
 
-        <div className="footer">
-          <p>© 2026 Luisli Gold Imperium</p>
-          <p style={{fontSize: '0.6rem', opacity: 0.4, marginTop: '10px', letterSpacing: '1px'}}>
-            CA: {contractAddress}
-          </p>
-        </div>
+        {/* 📝 FOOTER */}
+        <footer className="footer">
+          <p>© 2026 Luisli Gold Dashboard | Built on Base 🔵</p>
+          <p className="ca-text">CA: {contractAddress}</p>
+        </footer>
+
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,3 +1,4 @@
+/* Grund-Setup für die ganze Seite */
 #root {
   width: 100%;
   margin: 0;
@@ -13,137 +14,164 @@ body {
   min-height: 100vh;
   background: radial-gradient(circle at center, #0052FF 0%, #002d8d 100%) !important;
   color: white;
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
   width: 100vw;
+  overflow-x: hidden;
 }
 
+/* Der Haupt-Container, der alles zusammenhält */
 .container {
-  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Die Box, die alle Elemente untereinander ausrichtet */
+.content-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Zentriert alle Kinder-Elemente horizontal */
+  justify-content: flex-start;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto; /* Zentriert den Wrapper selbst im Container */
+  text-align: center; /* Zentriert Texte innerhalb von Elementen */
 }
 
-/* Der Mond: Scharf, leuchtend und ohne Rand-Probleme */
-/* --- Der Mond: Jetzt deutlich größer und präsenter --- */
+/* Logo / Mond Sektion */
+.logo-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .lgold-logo {
-  width: 220px; /* Von 150px auf 220px hochgeschraubt */
-  height: auto;
-  filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.7)); /* Stärkerer Glow */
-  margin-bottom: 10px; /* Etwas näher an den Text rücken */
-  display: block;
+  width: 240px !important;  /* Jetzt richtig groß! */
+  height: 240px !important;
+  min-width: 240px !important;
+  min-height: 240px !important;
+  object-fit: contain !important;
+  /* Ein noch schönerer, weicherer Gold-Glow */
+  filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)) !important;
+  display: block !important;
+  margin: 0 auto !important;
+  transition: transform 0.3s ease; /* Kleiner Bonus: Er reagiert sanft */
 }
 
-/* --- Der Titel: Feinjustierung der Größe --- */
+/* Container, der dem Mond Platz macht */
+.moon-container {
+  margin-bottom: -10px !important; /* Zieht den Mond etwas näher an den Titel, falls nötig */
+  margin-top: 20px !important;
+}
+
+.lgold-logo:hover {
+  transform: scale(1.05); /* Der Mond pulsiert leicht, wenn man mit der Maus drüber geht */
+}
+
+/* Der Goldene Titel */
 .gold-title {
-  font-family: sans-serif;
-  font-size: 4.5rem !important; /* Noch ein Stück wuchtiger */
+  font-size: 4.5rem !important;
   font-weight: 900 !important;
   margin: 0;
   text-align: center;
-  
-  /* Gold-Verlauf */
   background: linear-gradient(to bottom, #FFF5A5 0%, #FFD700 50%, #B8860B 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
-  line-height: 1.1; /* Damit der Abstand zum Subtitle passt */
 }
 
-h1 {
-  font-size: 3.5rem;
-  font-weight: bold;
-  /* Dies erstellt den Gold-Verlauf */
-  background: linear-gradient(to bottom, #FFD700 0%, #B8860B 100%) !important;
-  /* Wichtig, damit der Verlauf nur im Text sichtbar ist */
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important; /* Fallback */
-  /* Ein sanfter Schatten für mehr Tiefe */
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-  margin-top: 10px;
-  margin-bottom: 5px;
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 30px;
 }
 
+/* Die Statistik Karte */
 .card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 30px;
-  margin-top: 20px;
-  width: 350px;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.status-badge {
+  background: rgba(0, 82, 255, 0.2);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
 }
 
 .stat-item {
   display: flex;
   justify-content: space-between;
-  margin: 10px 0;
   border-bottom: 1px solid rgba(255,255,255,0.1);
   padding-bottom: 5px;
 }
 
-/* Container für die Buttons */
-.social-links {
+/* Social Links Zentrierung */
+.social-links-container {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-  flex-wrap: wrap; /* Falls der Bildschirm schmal ist, brechen sie um */
+  width: 100%;
 }
 
-/* Der Standard-Button Look */
+.social-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .social-button {
-  padding: 12px 25px;
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 12px;
+  color: white;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1rem;
-  color: white;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  transition: all 0.3s ease;
 }
 
-/* Hover-Effekt: Leuchten und leicht nach oben hüpfen */
 .social-button:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 215, 0, 0.15);
-  border-color: #FFD700;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.4);
-  color: #FFD700;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
-/* Spezielle Farben für die Icons (optional) */
-.x-link:hover {
-  border-color: #ffffff;
-  color: #ffffff;
+.footer {
+  margin-top: 40px;
+  width: 100%; /* Wichtig, damit die Zentrierung auf die volle Breite wirkt */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Zentriert die Inhalte horizontal */
+  justify-content: center;
+  text-align: center; /* Zentriert den Text selbst */
+  opacity: 0.6;
+  font-size: 0.9rem;
+  padding-bottom: 30px;
 }
 
-.tg-link:hover {
-  border-color: #24A1DE;
-  color: #24A1DE;
-}
-
-.dex-link:hover {
-  border-color: #FFD700;
-}
-
-/* Spezieller Vibe für Farcaster */
-.fc-link:hover {
-  border-color: #8a63d2 !important;
-  color: #8a63d2 !important;
-  box-shadow: 0 0 15px rgba(138, 99, 210, 0.4) !important;
-}
-
-/* X Button etwas markanter */
-.x-link {
-  font-size: 1.2rem;
+.ca-text {
+  font-family: monospace; /* Damit die Adresse sauber aussieht */
+  margin-top: 8px;
+  font-size: 0.75rem;
+  word-break: break-all; /* Verhindert, dass die lange Adresse am Handy das Layout sprengt */
+  max-width: 90%; /* Hält Abstand zum Rand */
 }
