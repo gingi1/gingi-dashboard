@@ -9,7 +9,7 @@ function App() {
     marketCap: 'Loading...'
   });
 
-  const contractAddress = "0xde46eD596277D87bBaF18F93294E245229559868";
+  const contractAddress = "0x0caE8b7e812e46145450Ea0f3048D64F091820aE";
 
   useEffect(() => {
     // Später kommt hier die Live-Abfrage rein
