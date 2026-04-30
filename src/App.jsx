@@ -99,7 +99,8 @@ function App() {
               </div>
 
               <footer className="footer">
-                <p>© 2026 Luisli Gold Dashboard | Built on Base 🔵</p>
+                <p>Built by 🔵 <strong>gingi.base.eth</strong></p>
+                <p>© 2026 Luisli Gold - The Golden Standard on Base</p>
                 <p className="ca-text">CA: {contractAddress}</p>
               </footer>
             </div>
