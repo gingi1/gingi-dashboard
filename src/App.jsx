@@ -98,11 +98,21 @@ function App() {
                 </div>
               </div>
 
-              <footer className="footer">
-                <p>Built by 🔵 <strong>gingi.base.eth</strong></p>
-                <p>© 2026 Luisli Gold - The Golden Standard on Base</p>
-                <p className="ca-text">CA: {contractAddress}</p>
-              </footer>
+              <footer className="footer" style={{ marginTop: '40px', padding: '20px', borderTop: '1px solid rgba(255, 215, 0, 0.1)' }}>
+        <p>
+          Built by 🔵 
+          <a 
+            href="https://www.base.org/name/gingi" 
+            target="_blank" 
+            rel="noreferrer"
+            style={{ color: '#FFD700', textDecoration: 'none', fontWeight: 'bold', marginLeft: '5px' }}
+          >
+            gingi.base.eth
+          </a>
+        </p>
+        <p>© 2026 Luisli Gold - The Golden Standard on Base</p>
+        <p className="ca-text">CA: {contractAddress}</p>
+      </footer>
             </div>
           </div>
 
