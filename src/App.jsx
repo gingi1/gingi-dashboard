@@ -110,6 +110,9 @@ function App() {
   </ul>
   <p style={{ marginTop: '20px', color: '#e0e0e0' }}>
     Track our journey on <a href={`https://basescan.org/address/${contractAddress}`} target="_blank" rel="noreferrer" style={{ color: '#4da3ff', textDecoration: 'underline', fontWeight: 'bold' }}>Basescan</a>.
+ <li style={{ marginTop: '15px', fontSize: '0.9rem' }}>
+  📁 <strong>Documentation:</strong> Full project details available on <a href="https://github.com/gingi1/My-Base-Smart-Contracts" target="_blank" rel="noreferrer" style={{ color: '#4da3ff', textDecoration: 'underline' }}>GitHub</a>.
+</li>
   </p>
 </div>
               <div className="social-links-container">
