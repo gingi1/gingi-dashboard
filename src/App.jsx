@@ -88,7 +88,30 @@ function App() {
                   </div>
                 </div>
               </div>
-
+              <div className="info-section" style={{ 
+  marginTop: '40px', 
+  marginBottom: '60px', // Schiebt den Footer weiter nach unten
+  textAlign: 'left', 
+  padding: '25px', 
+  backgroundColor: 'rgba(255,255,255,0.08)', 
+  borderRadius: '16px',
+  border: '1px solid rgba(255,255,255,0.1)' 
+}}>
+  <h2 style={{ color: '#ffffff', marginBottom: '15px', fontSize: '1.5rem' }}>Onchain Infrastructure & Vision</h2>
+  <p style={{ color: '#e0e0e0', lineHeight: '1.6' }}>
+    At <strong style={{ color: '#ffffff' }}>Luisli Gold ($LGOLD)</strong>, transparency and technical integrity are our core principles. 
+    We are deeply integrated into the Base ecosystem, leveraging high-signal onchain architecture 
+    to build a resilient and lasting protocol.
+  </p>
+  <ul style={{ listStyleType: 'none', padding: 0, marginTop: '20px' }}>
+    <li style={{ marginBottom: '12px', color: '#e0e0e0' }}>✅ <strong style={{ color: '#ffffff' }}>Smart Contract Verified:</strong> Our core protocol is live on Base Mainnet.</li>
+    <li style={{ marginBottom: '12px', color: '#e0e0e0' }}>🔗 <strong style={{ color: '#ffffff' }}>Onchain Identity:</strong> Authenticated via Basename: <a href="https://base.org/name/gingi" target="_blank" rel="noreferrer" style={{ color: '#4da3ff', textDecoration: 'underline', fontWeight: 'bold' }}>gingi.base.eth</a>.</li>
+    <li style={{ marginBottom: '12px', color: '#e0e0e0' }}>🚀 <strong style={{ color: '#ffffff' }}>Building for the Future:</strong> Focused on organic growth within the Base network.</li>
+  </ul>
+  <p style={{ marginTop: '20px', color: '#e0e0e0' }}>
+    Track our journey on <a href={`https://basescan.org/address/${contractAddress}`} target="_blank" rel="noreferrer" style={{ color: '#4da3ff', textDecoration: 'underline', fontWeight: 'bold' }}>Basescan</a>.
+  </p>
+</div>
               <div className="social-links-container">
                 <div className="social-links">
                   <a href="https://x.com/GuenterWiestner" target="_blank" rel="noreferrer" className="social-button">𝕏</a>
