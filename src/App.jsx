@@ -6,6 +6,10 @@ import { WagmiProvider } from 'wagmi';
 import { base } from 'wagmi/chains';
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import './App.css';
+import { x402Client } from "@x402/fetch";
+import { BuilderCodeClientExtension } from "@x402/extensions/builder-code";
+const client = new x402Client();
+client.registerExtension(new BuilderCodeClientExtension("luisli_gold_dashboard"));
 
 /* Wallet-Konfiguration direkt in der Datei */
 const config = getDefaultConfig({
